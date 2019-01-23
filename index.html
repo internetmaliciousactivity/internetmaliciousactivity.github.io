@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The Chain of Implicit Trust</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<style>
+/* Bootstrap overrides */
+body {
+  /*min-height: 1000px;*/
+  padding-top: 70px;
+}
+
+.navbar-default {
+  height: 65px;
+}
+
+.navbar-default
+.navbar-brand {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 65px;
+  font-size: 18pt;
+}
+
+.navbar-nav > li > a {
+  padding-top: 0;
+  padding-bottom: 0;
+  line-height: 65px;
+  font-size: 16pt;
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/media/com_demo/js/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/media/com_demo/js/highslide.config.js" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="https://www.highcharts.com/media/com_demo/css/highslide.css" />
+
+
+<script>
+	// Get the CSV and create the chart
+	//$.getJSON('based.json', function (chart) {
+	//	Highcharts.chart('plot', chart);
+	//});
+  $.getJSON('corr.json', function (chart) {
+		Highcharts.chart('plotcorr', chart);
+	});
+  $.getJSON('daytoday.json', function (chart) {
+    Highcharts.chart('plotdaytoday', chart);
+	});
+
+</script>
+
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+              <a href="index.html" class="navbar-brand">A Decade of Mal-Activity Reporting: A Retrospective Analysis of Internet Malicious Activity Blacklists</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav ">
+                  <li><a href="#about">About</a></li>
+                  <li><a href="#download">Downloads</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#rpartners">Research Partners</a></li>
+              </ul>
+              <!--<ul class="nav navbar-nav navbar-right">
+                  <li class="mylogo"><a><img src="TU_Muenchen_Logo.svg" height=40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="rwth_comsys_bild_rgb.svg" height="40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="Usyd_new_logo.png" height="40px"/></a>&nbsp;</li>
+                  <li class="mylogo"><a><img src="neu.png" height="40px"/></a></li>
+              </ul>-->
+              <a href="https://github.com/internetmaliciousactivity/internetmaliciousactivity.github.io"><img style="position: absolute; top: 0; right: 0; border: 0; z-index:999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me (if you wish) on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png""></a>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+    <div class="container">
+
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <div class="page-header">
+
+<h2 id="about">About this Study</h2>
+<p style="font-size: 16px">
+  <br>
+
+ This study (dataset is detailed in our <a href="submission/asiaccs_submission.pdf"> paper </a>)  focuses on reporting of Internet malicious activity (or mal-activity in short) by public blacklists with the objective of providing a systematic characterization of what has been reported over the years, and more importantly, the evolution of reported activities. Using an initial seed of 22 blacklists, covering the period from January 2007 to June 2017, we collect more than 51 million mal-activity reports involving 662K unique IP addresses worldwide. Leveraging the Wayback Machine, antivirus (AV) tool reports and several additional public datasets (e.g., BGP Route Views and Internet registries) we enrich the data with historical meta-information including geo-locations (countries), autonomous system (AS) numbers and types of mal-activity. Furthermore, we use the initially labelled dataset of $\approx$ 7.6 million mal-activities (obtained from public blacklists) to train a machine learning classifier to classify the remaining unlabeled dataset of $\approx$ 44 million mal-activities obtained through additional sources. 
+We make our unique collected dataset (and scripts used) publicly available for further research.
+
+The main contributions of the study (dataset is detailed in our <a href="submission/asiaccs_submission.pdf"> paper </a>)  is a novel means of report collection, with a machine learning approach to classify reported activities, characterization of the dataset and, most importantly, temporal analysis of mal-activity reporting behaviour. Inspired by P2P behaviour modelling, our analysis shows that some classes of mal-activities (e.g., phishing) and a small number of mal-activity sources are persistent, suggesting that either blacklist-based prevention systems are ineffective or have unreasonably long update periods. Our analysis also indicates that resources can be better utilized by focusing on heavy mal-activity contributors, which constitute the bulk of mal-activities.
+
+<br><br>
+</p>
+<br>
+<h2 id="download">Paper and Dataset Download</h2>
+<p style="font-size: 16px">
+Our paper has been submitted (for anonymous reviews) to <a href="https://asiaccs2019.blogs.auckland.ac.nz/">AsiaCCS 2019</a>.<br>
+</p>
+
+
+<p style="font-size: 16px">
+  <!-- col
+We provide our dataset <a href="https://github.com/wot19submission/wot19submission.github.io">on Github</a>.<br>
+ -->
+A sample of <a href="link"> dataset</a> and <a href='link'> scripts</a> used for the publication is hosted at on Github repo.<br><br>
+Please contact us on the following email for if you intend to use the dataset and scripts. <br /><br>
+</p>
+
+<h2 id="contact">Contact</h2>
+<p style="font-size: 16px">
+	<b>internetmaliciousactivity</b> [at] <b>gmail.com</b>
+</p>
+
+<h2 id="rpartner">Research Partners</h2>
+<p style="font-size: 16px">
+Historical malware dataset for this study is based on
+Anonymous' (name will be updated) <a href="https://github.com/wot19submission/wot19submission.github.io"> AnonymousProject </a> (will be updated).
+
+    </div>  <!-- col -->
+  </div>  <!-- row -->
+
+    </div> <!-- /container -->
+
+</body>
+</html>
